@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  background-color: #E6DFD3;
+  color: #0F172A;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #E6DFD3;
+  color: #0F172A;
+}
+
+/* Custom range slider styling */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  border-radius: 9999px;
+  background: #C7BEAD;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: #0F766E;
+  border: 3px solid #F0EAE0;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
+  cursor: pointer;
+  margin-top: -7px;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type=range].slider-hazard::-webkit-slider-thumb {
+  background: #991B1B;
+  box-shadow: 0 2px 6px rgba(153, 27, 27, 0.35);
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  border-radius: 9999px;
+  background: #C7BEAD;
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: #0F766E;
+  border: 3px solid #F0EAE0;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.25);
+  cursor: pointer;
+}
+
+/* Subtle Radar Ping Animation */
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.45;
+  }
+  70% {
+    transform: scale(2.1);
+    opacity: 0.08;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.radar-pulse-anim {
+  animation: radar-pulse 2.4s cubic-bezier(0.2, 0.6, 0.35, 1) infinite;
+  transform-origin: center;
+}
+
+.radar-pulse-anim-delayed {
+  animation: radar-pulse 2.4s cubic-bezier(0.2, 0.6, 0.35, 1) infinite 1.2s;
+  transform-origin: center;
+}
+
+/* Live pulse dots */
+@keyframes live-dot-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.65;
+  }
+}
+
+.live-dot {
+  animation: live-dot-pulse 2s ease-in-out infinite;
+}
+
+/* Smooth code scroll & typography */
+pre,
+code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0C162E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #203566;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2C4680;
+}
+
+/* Free, 100% reliable dark & grey map tile styling (No API key needed) */
+.osm-dark-tiles .leaflet-tile {
+  filter: brightness(0.6) invert(1) contrast(1.35) hue-rotate(205deg) saturate(0.25);
+}
+
+.osm-grey-tiles .leaflet-tile {
+  filter: grayscale(100%) brightness(0.65) contrast(1.15);
+}
+
+.leaflet-container {
+  background-color: #0C162E !important;
+}
+
+.custom-flood-tooltip {
+  background: #0C162E !important;
+  color: #F0EAE0 !important;
+  border: 1px solid #203566 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}

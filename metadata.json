@@ -1,0 +1,6 @@
+{
+  "name": "FloodGrid",
+  "description": "B2B Data-as-a-Service (DaaS) IoT Flood Detection & Real-Time Dynamic Routing API for Logistics Fleets in Mumbai.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
