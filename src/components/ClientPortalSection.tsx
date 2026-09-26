@@ -16,6 +16,7 @@ import {
 } from './Icons.tsx';
 import { MumbaiCorridorMap } from './MumbaiCorridorMap.tsx';
 import { IndiaFloodMap } from './IndiaFloodMap.tsx';
+import { FloodGridBrandLogo } from './FloodGridBrandLogo.tsx';
 
 interface ClientPortalSectionProps {
   isAuthenticated: boolean;
@@ -73,9 +74,9 @@ export function ClientPortalSection({
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="max-w-md mx-auto bg-[#F0EAE0] rounded-2xl border border-[#D4CBB9] p-8 shadow-elevated space-y-6">
-          <div className="text-center space-y-2">
-            <div className="w-12 h-12 rounded-2xl bg-[#E2ECEB] border border-[#BBD5D2] flex items-center justify-center text-[#0F766E] mx-auto">
-              <IconLock className="w-6 h-6 text-[#0F766E]" />
+          <div className="text-center space-y-3">
+            <div className="bg-white/90 inline-block px-4 py-2 rounded-xl border border-[#D4CBB9] shadow-subtle">
+              <FloodGridBrandLogo size="md" />
             </div>
             <h2 className="text-2xl font-extrabold text-[#0F172A] tracking-tight">
               Client API Portal Access
@@ -156,23 +157,14 @@ export function ClientPortalSection({
       <div className="grid lg:grid-cols-12 gap-8 items-start">
         {/* DEEP MIDNIGHT NAVY DASHBOARD SIDEBAR */}
         <aside className="lg:col-span-4 xl:col-span-3 bg-[#0C162E] rounded-2xl border border-[#203566] p-5 shadow-card space-y-6 text-white sticky top-20">
-          <div className="space-y-2 pb-4 border-b border-[#203566]">
-            <div className="flex items-center space-x-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#15264E] border border-[#203566] flex items-center justify-center text-[#4E9B93]">
-                <IconTruck className="w-4 h-4 text-[#4E9B93]" />
-              </div>
-              <div>
-                <h3 className="font-extrabold text-sm text-white tracking-tight leading-none">
-                  Fleet Console
-                </h3>
-                <span className="text-[10px] font-mono text-[#68B0A8] font-bold">
-                  MUMBAI PILOT HUB
-                </span>
-              </div>
+          <div className="space-y-3 pb-4 border-b border-[#203566]">
+            <div className="bg-white/95 p-2 rounded-xl border border-white/20 shadow-sm flex items-center justify-center">
+              <FloodGridBrandLogo size="sm" className="scale-95" />
             </div>
-            <p className="text-[11px] text-slate-400 leading-tight">
-              High-velocity dynamic routing &amp; live flood telemetry gateway.
-            </p>
+            <div className="flex items-center justify-between text-[11px] font-mono">
+              <span className="text-slate-400">Console:</span>
+              <span className="text-[#68B0A8] font-bold">MUMBAI PILOT HUB</span>
+            </div>
           </div>
 
           <div className="space-y-1">

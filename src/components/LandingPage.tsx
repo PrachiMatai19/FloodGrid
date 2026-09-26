@@ -8,6 +8,7 @@ import {
   IconCpu,
   IconRoute
 } from './Icons.tsx';
+import { FloodGridBrandLogo } from './FloodGridBrandLogo.tsx';
 
 interface LandingPageProps {
   setActiveTab: (tab: string) => void;
@@ -17,14 +18,21 @@ export function LandingPage({ setActiveTab }: LandingPageProps) {
   return (
     <div className="space-y-20 pb-20">
       {/* [A] HERO SECTION */}
-      <section className="relative pt-12 sm:pt-20 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="relative pt-10 sm:pt-16 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-4xl mx-auto space-y-6">
+          {/* Official FloodGrid Logo Showcase on Crisp Surface */}
+          <div className="inline-block bg-white/80 backdrop-blur-sm p-4 sm:p-5 rounded-2xl border border-[#D4CBB9] shadow-subtle mb-1 hover:shadow-card transition-shadow">
+            <FloodGridBrandLogo size="lg" className="sm:scale-105" />
+          </div>
+
           {/* Regional Announcement Pill */}
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#DDD5C5] border border-[#C7BEAD] text-xs font-semibold text-[#0F172A] shadow-subtle">
-            <span className="flex h-2 w-2 rounded-full bg-[#0F766E]"></span>
-            <span className="font-semibold text-[#0F172A]">Active Mumbai Monsoon Corridor Telemetry</span>
-            <span className="text-slate-400">•</span>
-            <span className="font-mono text-[11px] text-[#384860] font-medium">B2B REST &amp; Webhook Ingestion</span>
+          <div>
+            <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-[#DDD5C5] border border-[#C7BEAD] text-xs font-semibold text-[#0F172A] shadow-subtle">
+              <span className="flex h-2 w-2 rounded-full bg-[#0F766E]"></span>
+              <span className="font-semibold text-[#0F172A]">Active Mumbai Monsoon Corridor Telemetry</span>
+              <span className="text-slate-400">•</span>
+              <span className="font-mono text-[11px] text-[#384860] font-medium">B2B REST &amp; Webhook Ingestion</span>
+            </div>
           </div>
 
           {/* EXACT Headline */}

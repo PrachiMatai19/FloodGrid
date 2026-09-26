@@ -1,5 +1,6 @@
 import React from 'react';
 import { IconLogo } from './Icons.tsx';
+import { FloodGridBrandLogo } from './FloodGridBrandLogo.tsx';
 
 interface FooterProps {
   setActiveTab: (tab: string) => void;
@@ -10,15 +11,10 @@ export function Footer({ setActiveTab }: FooterProps) {
     <footer className="bg-[#0C162E] border-t border-[#203566] text-slate-300 mt-20 shadow-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-[#203566]">
-          {/* Brand Col */}
+          {/* Brand Col with Official FloodGrid Logo */}
           <div className="space-y-3">
-            <div className="flex items-center space-x-2">
-              <div className="w-7 h-7 rounded-lg bg-[#15264E] border border-[#203566] flex items-center justify-center text-[#4E9B93]">
-                <IconLogo className="w-4 h-4 text-[#4E9B93]" />
-              </div>
-              <span className="font-extrabold text-base text-white tracking-tight">
-                Flood<span className="text-[#4E9B93]">Grid</span>
-              </span>
+            <div className="bg-white/95 inline-block px-3 py-1.5 rounded-xl border border-white/20 shadow-sm">
+              <FloodGridBrandLogo size="sm" />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
               B2B IoT flood intelligence and dynamic routing engine protecting commercial fleets across Mumbai and MMR corridors.

@@ -1,5 +1,6 @@
 import React from 'react';
 import { IconLogo, IconLock, IconArrowRight } from './Icons.tsx';
+import { FloodGridBrandLogo, FloodGridIconMark } from './FloodGridBrandLogo.tsx';
 
 interface NavbarProps {
   activeTab: string;
@@ -10,21 +11,23 @@ export function Navbar({ activeTab, setActiveTab }: NavbarProps) {
   return (
     <header className="sticky top-0 z-40 bg-[#0C162E]/95 backdrop-blur-md border-b border-[#203566] text-white shadow-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Left: Brand Logo + Live Pulse Badge */}
+        {/* Left: Official FloodGrid Logo + Live Pulse Badge */}
         <div className="flex items-center space-x-3 sm:space-x-5">
           <button
             onClick={() => setActiveTab('landing')}
-            className="flex items-center space-x-2.5 group text-left focus:outline-none cursor-pointer"
+            className="flex items-center space-x-3 group text-left focus:outline-none cursor-pointer"
           >
-            <div className="w-9 h-9 rounded-xl bg-[#15264E] border border-[#203566] flex items-center justify-center text-[#4E9B93] group-hover:scale-105 transition-transform shadow-sm">
-              <IconLogo className="w-5 h-5 text-[#4E9B93]" />
+            {/* White pill background ensuring high-contrast pop of the official logo on dark header */}
+            <div className="bg-white/95 hover:bg-white px-2.5 py-1 rounded-xl border border-white/20 shadow-sm transition-all group-hover:scale-105 flex items-center">
+              <FloodGridBrandLogo size="sm" className="scale-95" />
             </div>
-            <div className="flex flex-col">
-              <span className="font-extrabold text-lg text-white tracking-tight leading-none">
-                Flood<span className="text-[#4E9B93]">Grid</span>
-              </span>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-medium">
+
+            <div className="hidden lg:flex flex-col">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-[#68B0A8] font-bold">
                 IoT DaaS Engine
+              </span>
+              <span className="text-[9px] font-mono text-slate-400">
+                v1.4.2-pilot
               </span>
             </div>
           </button>
