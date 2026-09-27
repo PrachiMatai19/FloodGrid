@@ -101,7 +101,7 @@ export function MumbaiCorridorMap() {
       </div>
 
       {/* Interactive Map Canvas + Floating Active Node Card */}
-      <div className="grid lg:grid-cols-12 gap-0 relative bg-[#0C162E]">
+      <div className="grid lg:grid-cols-12 gap-0 relative bg-[#141E28]">
         {/* SVG Visual Component */}
         <div className="lg:col-span-8 p-4 sm:p-6 flex items-center justify-center relative min-h-[440px]">
           <svg
@@ -116,7 +116,7 @@ export function MumbaiCorridorMap() {
               </pattern>
             </defs>
 
-            <rect width="540" height="440" fill="#0C162E" />
+            <rect width="540" height="440" fill="#141E28" />
             <rect width="540" height="440" fill="url(#seaGridMuted)" />
 
             <text x="60" y="320" fill="#3E5482" fontSize="11" fontWeight="700" letterSpacing="2" fontFamily="sans-serif">
@@ -228,8 +228,8 @@ export function MumbaiCorridorMap() {
                       width="90"
                       height="24"
                       rx="4"
-                      fill="#0C162E"
-                      stroke={isSelected ? "#2D8A82" : "#203566"}
+                      fill="#141E28"
+                      stroke={isSelected ? "#2D8A82" : "#2C3E50"}
                       strokeWidth={isSelected ? "1.5" : "1"}
                       className="shadow-sm"
                     />
@@ -246,7 +246,7 @@ export function MumbaiCorridorMap() {
           </svg>
 
           {/* Map Legend */}
-          <div className="absolute bottom-4 left-4 bg-[#0C162E]/95 backdrop-blur-sm p-3.5 rounded-xl border border-[#203566] text-[11px] space-y-1.5 shadow-card">
+          <div className="absolute bottom-4 left-4 bg-[#141E28]/95 backdrop-blur-sm p-3.5 rounded-xl border border-[#2C3E50] text-[11px] space-y-1.5 shadow-card">
             <div className="font-bold text-slate-300 text-[10px] uppercase tracking-wider mb-1">
               Waterlogging Risk Gradients
             </div>
@@ -331,7 +331,7 @@ export function MumbaiCorridorMap() {
                   onClick={() => setSelectedNode(n.id)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     n.id === selectedNode
-                      ? 'bg-[#0C162E] text-white font-bold shadow-sm'
+                      ? 'bg-[#141E28] text-white font-bold shadow-sm'
                       : 'bg-[#DDD5C5] text-[#0F172A] border border-[#C7BEAD] hover:bg-white'
                   }`}
                 >

@@ -61,7 +61,7 @@ export function LandingPage({ setActiveTab }: LandingPageProps) {
               className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-7 py-3.5 rounded-xl text-base font-bold text-[#0F172A] bg-[#F0EAE0] border border-[#C7BEAD] hover:border-[#9E917A] hover:bg-white transition-all shadow-subtle active:scale-95 cursor-pointer"
             >
               <IconZap className="w-4 h-4 text-[#0F766E]" />
-              <span>Test Live API</span>
+              <span>Try API Playground</span>
             </button>
 
             <button

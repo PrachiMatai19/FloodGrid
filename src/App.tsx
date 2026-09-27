@@ -30,6 +30,9 @@ export default function App() {
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        isAuthenticated={isAuthenticated}
+        setIsAuthenticated={setIsAuthenticated}
+        emailInput={emailInput}
       />
 
       {/* Main Views Container */}

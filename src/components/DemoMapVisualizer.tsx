@@ -52,9 +52,9 @@ export function DemoMapVisualizer({ demoLocation, demoWaterDepth }: DemoMapVisua
   const isSubmerged = demoWaterDepth >= 150;
 
   return (
-    <div className="relative w-full h-[420px] sm:h-[460px] bg-[#0C162E] rounded-2xl border border-[#203566] overflow-hidden shadow-card flex flex-col justify-between select-none">
+    <div className="relative w-full h-[420px] sm:h-[460px] bg-[#141E28] rounded-2xl border border-[#2C3E50] overflow-hidden shadow-card flex flex-col justify-between select-none">
       {/* Disclaimer Overlay Banner at the top of the map */}
-      <div className="absolute top-0 inset-x-0 z-20 bg-[#101D3D]/95 backdrop-blur-sm border-b border-[#203566] px-4 py-2 flex items-center justify-between text-xs text-[#D4A373] font-medium shadow-sm">
+      <div className="absolute top-0 inset-x-0 z-20 bg-[#1A2634]/95 backdrop-blur-sm border-b border-[#2C3E50] px-4 py-2 flex items-center justify-between text-xs text-[#D4A373] font-medium shadow-sm">
         <div className="flex items-center space-x-2">
           <span className="text-[#D4A373] font-bold">⚠️</span>
           <span className="font-semibold text-slate-300">Demo Mode: Current map data is simulated for representation purposes only.</span>
@@ -80,7 +80,7 @@ export function DemoMapVisualizer({ demoLocation, demoWaterDepth }: DemoMapVisua
           <radialGradient id="radialMutedDark" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#1A2D42" stopOpacity="0.8" />
             <stop offset="60%" stopColor="#0E1A29" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#0C162E" stopOpacity="0" />
+            <stop offset="100%" stopColor="#141E28" stopOpacity="0" />
           </radialGradient>
 
           <pattern id="mutedNavyGrid" width="28" height="28" patternUnits="userSpaceOnUse">
@@ -89,7 +89,7 @@ export function DemoMapVisualizer({ demoLocation, demoWaterDepth }: DemoMapVisua
         </defs>
 
         {/* Base Deep Midnight Navy Grid */}
-        <rect width="640" height="420" fill="#0C162E" />
+        <rect width="640" height="420" fill="#141E28" />
         <rect width="640" height="420" fill="url(#mutedNavyGrid)" />
 
         {/* Ambient Urban Geometry / City Blocks */}
@@ -148,7 +148,7 @@ export function DemoMapVisualizer({ demoLocation, demoWaterDepth }: DemoMapVisua
             fill={`url(#${riskCategory.gradientId})`}
             opacity={riskCategory.auraOpacity}
           />
-          <circle cx="0" cy="0" r="13" fill="#0C162E" stroke="#4B6F9A" strokeWidth="2" />
+          <circle cx="0" cy="0" r="13" fill="#141E28" stroke="#4B6F9A" strokeWidth="2" />
           <circle cx="0" cy="0" r="7.5" fill={isSubmerged ? "#991B1B" : riskCategory.colorHex} />
           <circle cx="0" cy="0" r="2.5" fill="#FFFFFF" />
 
@@ -165,7 +165,7 @@ export function DemoMapVisualizer({ demoLocation, demoWaterDepth }: DemoMapVisua
         {/* Civic Pole Telemetry Sensor Assembly Graphic */}
         <g transform="translate(320, 165)">
           <line x1="0" y1="0" x2="0" y2="60" stroke="#3E5780" strokeWidth="2.5" />
-          <rect x="-13" y="-7" width="26" height="15" rx="3" fill="#15264E" stroke="#2B447A" strokeWidth="1.2" />
+          <rect x="-13" y="-7" width="26" height="15" rx="3" fill="#1F2D3D" stroke="#2B447A" strokeWidth="1.2" />
           <path d="M -7 13 A 9 9 0 0 0 7 13" stroke="#3D7D76" strokeWidth="1.5" fill="none" />
           <path d="M -11 18 A 14 14 0 0 0 11 18" stroke="#3D7D76" strokeWidth="1.5" fill="none" opacity="0.5" />
           <text x="0" y="3" textAnchor="middle" fill="#68B0A8" fontSize="7" fontWeight="bold" fontFamily="monospace">
@@ -175,14 +175,14 @@ export function DemoMapVisualizer({ demoLocation, demoWaterDepth }: DemoMapVisua
 
         {/* Road Sign / Route Annotations */}
         <g transform="translate(60, 225)">
-          <rect x="0" y="0" width="130" height="20" rx="4" fill="#15264E" stroke="#203566" strokeWidth="1" />
+          <rect x="0" y="0" width="130" height="20" rx="4" fill="#1F2D3D" stroke="#2C3E50" strokeWidth="1" />
           <text x="8" y="14" fill="#CBD5E1" fontSize="10" fontWeight="600" fontFamily="sans-serif">
             {hotspot.normalRoute.substring(0, 18)}...
           </text>
         </g>
 
         <g transform="translate(425, 85)">
-          <rect x="0" y="0" width="175" height="22" rx="4" fill="#15264E" stroke={isSubmerged ? "#0F766E" : "#203566"} strokeWidth="1.2" />
+          <rect x="0" y="0" width="175" height="22" rx="4" fill="#1F2D3D" stroke={isSubmerged ? "#0F766E" : "#2C3E50"} strokeWidth="1.2" />
           <text x="8" y="15" fill={isSubmerged ? "#68B0A8" : "#94A3B8"} fontSize="10" fontWeight="700" fontFamily="sans-serif">
             {isSubmerged ? "★ ACTIVE REROUTE (FLYOVER)" : "Bypass Flyover (Standby)"}
           </text>
@@ -197,10 +197,10 @@ export function DemoMapVisualizer({ demoLocation, demoWaterDepth }: DemoMapVisua
       </svg>
 
       {/* Bottom Map Status Bar */}
-      <div className="bg-[#0C162E]/95 border-t border-[#203566] p-3 px-4 flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="bg-[#141E28]/95 border-t border-[#2C3E50] p-3 px-4 flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex items-center space-x-2">
           <span className="font-bold text-white">{hotspot.name}</span>
-          <span className="text-[#2C4680]">|</span>
+          <span className="text-[#384D63]">|</span>
           <span className="font-mono text-[#68B0A8] font-semibold">{hotspot.hotspot_id}</span>
         </div>
 

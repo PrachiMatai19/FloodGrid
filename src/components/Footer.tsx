@@ -13,7 +13,7 @@ export function Footer({ setActiveTab }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-[#203566]">
           {/* Brand Col with Official FloodGrid Logo */}
           <div className="space-y-3">
-            <div className="bg-white/95 inline-block px-3 py-1.5 rounded-xl border border-white/20 shadow-sm">
+            <div className="bg-[#E6DFD3] inline-block px-3 py-1.5 rounded-xl border border-[#D4CBB9] shadow-sm">
               <FloodGridBrandLogo size="sm" />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">

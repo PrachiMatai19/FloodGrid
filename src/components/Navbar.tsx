@@ -1,13 +1,26 @@
 import React from 'react';
-import { IconLogo, IconLock, IconArrowRight } from './Icons.tsx';
-import { FloodGridBrandLogo, FloodGridIconMark } from './FloodGridBrandLogo.tsx';
+import { IconLock, IconArrowRight, IconLogOut } from './Icons.tsx';
+import { FloodGridBrandLogo } from './FloodGridBrandLogo.tsx';
 
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  isAuthenticated?: boolean;
+  setIsAuthenticated?: (auth: boolean) => void;
+  emailInput?: string;
 }
 
-export function Navbar({ activeTab, setActiveTab }: NavbarProps) {
+export function Navbar({
+  activeTab,
+  setActiveTab,
+  isAuthenticated = false,
+  setIsAuthenticated,
+  emailInput = ''
+}: NavbarProps) {
+  const clientDisplayName = emailInput.toLowerCase().includes('zepto')
+    ? 'Zepto Logistics'
+    : 'Swiggy Fleet Hub';
+
   return (
     <header className="sticky top-0 z-40 bg-[#0C162E]/95 backdrop-blur-md border-b border-[#203566] text-white shadow-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -46,16 +59,6 @@ export function Navbar({ activeTab, setActiveTab }: NavbarProps) {
         {/* Center Navigation Links */}
         <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
           <button
-            onClick={() => setActiveTab('landing')}
-            className={`px-3.5 py-1.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${
-              activeTab === 'landing'
-                ? 'text-[#7DC5BD] bg-[#15264E] border border-[#2D8A82]/50 shadow-sm'
-                : 'text-slate-300 hover:text-white hover:bg-[#15264E]/60'
-            }`}
-          >
-            Overview
-          </button>
-          <button
             onClick={() => setActiveTab('india-map')}
             className={`px-3.5 py-1.5 rounded-lg text-sm font-semibold transition-all cursor-pointer flex items-center space-x-1.5 ${
               activeTab === 'india-map'
@@ -74,7 +77,7 @@ export function Navbar({ activeTab, setActiveTab }: NavbarProps) {
                 : 'text-slate-300 hover:text-white hover:bg-[#15264E]/60'
             }`}
           >
-            Live API Demo
+            API Playground
           </button>
           <button
             onClick={() => setActiveTab('pricing')}
@@ -86,46 +89,51 @@ export function Navbar({ activeTab, setActiveTab }: NavbarProps) {
           >
             B2B Pricing
           </button>
-          <button
-            onClick={() => setActiveTab('usage-portal')}
-            className={`px-3.5 py-1.5 rounded-lg text-sm font-semibold transition-all cursor-pointer ${
-              activeTab === 'usage-portal'
-                ? 'text-[#7DC5BD] bg-[#15264E] border border-[#2D8A82]/50 shadow-sm'
-                : 'text-slate-300 hover:text-white hover:bg-[#15264E]/60'
-            }`}
-          >
-            Client Portal
-          </button>
         </nav>
 
-        {/* Right Action: Button "Client Login" */}
+        {/* Right Action: Single dedicated Client Portal entrypoint without redundant duplicate buttons */}
         <div className="flex items-center space-x-2.5">
-          <button
-            onClick={() => setActiveTab('usage-portal')}
-            className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-200 bg-[#15264E] border border-[#203566] hover:border-[#2D8A82]/50 hover:text-white transition-all shadow-subtle active:scale-95 cursor-pointer"
-          >
-            <IconLock className="w-3.5 h-3.5 text-[#4E9B93]" />
-            <span>Client Login</span>
-          </button>
-
-          <button
-            onClick={() => setActiveTab('api-demo')}
-            className="hidden sm:inline-flex items-center space-x-1.5 px-4 py-1.5 rounded-lg text-xs sm:text-sm font-bold text-white bg-[#0F766E] hover:bg-[#115E59] transition-all shadow-subtle active:scale-95 cursor-pointer"
-          >
-            <span>Test Live API</span>
-            <IconArrowRight className="w-3.5 h-3.5 text-teal-100" />
-          </button>
+          {isAuthenticated ? (
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => setActiveTab('usage-portal')}
+                className={`inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all shadow-subtle cursor-pointer ${
+                  activeTab === 'usage-portal'
+                    ? 'bg-[#0F766E] text-white border border-teal-500'
+                    : 'bg-[#15264E] text-[#7DC5BD] border border-[#2D8A82]/40 hover:bg-[#1C3266]'
+                }`}
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>{clientDisplayName}</span>
+              </button>
+              {setIsAuthenticated && (
+                <button
+                  onClick={() => setIsAuthenticated(false)}
+                  title="Logout Account"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-[#203566] transition-colors cursor-pointer"
+                >
+                  <IconLogOut className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+          ) : (
+            <button
+              onClick={() => setActiveTab('usage-portal')}
+              className={`inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all shadow-subtle cursor-pointer ${
+                activeTab === 'usage-portal'
+                  ? 'bg-[#0F766E] text-white border border-teal-400'
+                  : 'text-slate-200 bg-[#15264E] border border-[#203566] hover:border-[#2D8A82]/50 hover:text-white'
+              }`}
+            >
+              <IconLock className="w-3.5 h-3.5 text-[#4E9B93]" />
+              <span>Client Portal</span>
+            </button>
+          )}
         </div>
       </div>
 
       {/* Mobile Tab Strip */}
       <div className="md:hidden flex items-center justify-around border-t border-[#203566] bg-[#0C162E] px-2 py-2 text-xs">
-        <button
-          onClick={() => setActiveTab('landing')}
-          className={`px-2 py-1 rounded-md font-medium transition-all ${activeTab === 'landing' ? 'text-[#7DC5BD] font-bold bg-[#15264E] border border-[#2D8A82]/50' : 'text-slate-400'}`}
-        >
-          Overview
-        </button>
         <button
           onClick={() => setActiveTab('india-map')}
           className={`px-2 py-1 rounded-md font-medium transition-all ${activeTab === 'india-map' ? 'text-[#7DC5BD] font-bold bg-[#15264E] border border-[#2D8A82]/50' : 'text-slate-400'}`}
@@ -136,7 +144,7 @@ export function Navbar({ activeTab, setActiveTab }: NavbarProps) {
           onClick={() => setActiveTab('api-demo')}
           className={`px-2 py-1 rounded-md font-medium transition-all ${activeTab === 'api-demo' ? 'text-[#7DC5BD] font-bold bg-[#15264E] border border-[#2D8A82]/50' : 'text-slate-400'}`}
         >
-          API Demo
+          Playground
         </button>
         <button
           onClick={() => setActiveTab('pricing')}
@@ -148,7 +156,7 @@ export function Navbar({ activeTab, setActiveTab }: NavbarProps) {
           onClick={() => setActiveTab('usage-portal')}
           className={`px-2 py-1 rounded-md font-medium transition-all ${activeTab === 'usage-portal' ? 'text-[#7DC5BD] font-bold bg-[#15264E] border border-[#2D8A82]/50' : 'text-slate-400'}`}
         >
-          Portal
+          {isAuthenticated ? 'Portal' : 'Login'}
         </button>
       </div>
     </header>

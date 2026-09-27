@@ -128,16 +128,16 @@ code {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0C162E;
+  background: #141E28;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #203566;
+  background: #2C3E50;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2C4680;
+  background: #384D63;
 }
 
 /* Free, 100% reliable dark & grey map tile styling (No API key needed) */
@@ -150,13 +150,13 @@ code {
 }
 
 .leaflet-container {
-  background-color: #0C162E !important;
+  background-color: #141E28 !important;
 }
 
 .custom-flood-tooltip {
-  background: #0C162E !important;
+  background: #141E28 !important;
   color: #F0EAE0 !important;
-  border: 1px solid #203566 !important;
+  border: 1px solid #2C3E50 !important;
   border-radius: 8px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
 }

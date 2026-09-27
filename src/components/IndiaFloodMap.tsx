@@ -317,7 +317,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
           // Other site hotspots (Milan, Kurla, Hindmata, Dadar)
           primaryColor = sensor.hazardStatus === 'CRITICAL_FLOOD' ? '#991B1B' : (sensor.hazardStatus === 'MODERATE_RISK' ? '#2C5282' : '#0F766E');
           pulseColor = sensor.hazardStatus === 'CRITICAL_FLOOD' ? '#EF4444' : (sensor.hazardStatus === 'MODERATE_RISK' ? '#477A8F' : '#2D8A82');
-          badgeBorder = sensor.hazardStatus === 'CRITICAL_FLOOD' ? '#991B1B' : '#203566';
+          badgeBorder = sensor.hazardStatus === 'CRITICAL_FLOOD' ? '#991B1B' : '#2C3E50';
           badgeColor = sensor.hazardStatus === 'CRITICAL_FLOOD' ? '#FCA5A5' : '#7DC5BD';
         }
       }
@@ -363,7 +363,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
             position: absolute;
             bottom: -20px;
             white-space: nowrap;
-            background: #0C162E;
+            background: #141E28;
             color: ${badgeColor};
             border: 1px solid ${isBigBadge ? '#FFFFFF' : badgeBorder};
             padding: 1px 5px;
@@ -446,10 +446,10 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
   return (
     <div className="space-y-6">
       {/* Top Banner & Focus Selector */}
-      <div className="bg-[#0C162E] rounded-2xl border border-[#203566] p-6 text-white shadow-elevated">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-6 border-b border-[#203566]">
+      <div className="bg-[#141E28] rounded-2xl border border-[#2C3E50] p-6 text-white shadow-elevated">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-6 border-b border-[#2C3E50]">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#15264E] border border-[#203566] text-xs font-semibold text-[#7DC5BD]">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#1F2D3D] border border-[#2C3E50] text-xs font-semibold text-[#7DC5BD]">
               <span className="relative flex h-2 w-2">
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0F766E]"></span>
               </span>
@@ -476,7 +476,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
 
             <button
               onClick={handleResetToIndia}
-              className="px-3.5 py-2.5 rounded-xl text-xs font-bold font-mono bg-[#15264E] hover:bg-[#203566] text-slate-200 border border-[#203566] transition-all shadow-subtle flex items-center space-x-1.5 cursor-pointer"
+              className="px-3.5 py-2.5 rounded-xl text-xs font-bold font-mono bg-[#1F2D3D] hover:bg-[#2C3E50] text-slate-200 border border-[#2C3E50] transition-all shadow-subtle flex items-center space-x-1.5 cursor-pointer"
             >
               <span>🇮🇳 Whole India</span>
             </button>
@@ -487,26 +487,26 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4 pt-5">
           <div
             onClick={handleJumpToAndheri}
-            className="bg-[#15264E] p-3.5 rounded-xl border-2 border-[#DC2626] cursor-pointer hover:bg-[#1A2E5E] transition-colors"
+            className="bg-[#1F2D3D] p-3.5 rounded-xl border-2 border-[#DC2626] cursor-pointer hover:bg-[#1A2E5E] transition-colors"
           >
             <div className="text-[11px] font-mono text-[#FCA5A5] uppercase font-bold">Andheri Subway Station</div>
             <div className="text-2xl font-extrabold font-mono text-white mt-1">220 mm</div>
             <div className="text-[10px] text-[#FCA5A5] font-semibold mt-0.5">⚠️ Subway Submerged &bull; Reroute Active</div>
           </div>
 
-          <div className="bg-[#101D3D] p-3.5 rounded-xl border border-[#203566]">
+          <div className="bg-[#1A2634] p-3.5 rounded-xl border border-[#2C3E50]">
             <div className="text-[11px] font-mono text-slate-400 uppercase font-semibold">Gokhale Bridge Flyover</div>
             <div className="text-2xl font-extrabold font-mono text-[#34D399] mt-1">15 mm</div>
             <div className="text-[10px] text-[#6EE7B7] font-semibold mt-0.5">✓ Official Bypass &bull; Clear Passage</div>
           </div>
 
-          <div className="bg-[#101D3D] p-3.5 rounded-xl border border-[#203566]">
+          <div className="bg-[#1A2634] p-3.5 rounded-xl border border-[#2C3E50]">
             <div className="text-[11px] font-mono text-slate-400 uppercase font-semibold">Site Mumbai Hotspots</div>
             <div className="text-2xl font-extrabold font-mono text-[#93C5FD] mt-1">5 Subways</div>
             <div className="text-[10px] text-[#BFDBFE] font-semibold mt-0.5">Andheri, Milan, Kurla, Hindmata, Dadar</div>
           </div>
 
-          <div className="bg-[#101D3D] p-3.5 rounded-xl border border-[#203566]">
+          <div className="bg-[#1A2634] p-3.5 rounded-xl border border-[#2C3E50]">
             <div className="text-[11px] font-mono text-slate-400 uppercase font-semibold">National Telemetry Grid</div>
             <div className="text-2xl font-extrabold font-mono text-slate-200 mt-1">{stats.total} Stations</div>
             <div className="text-[10px] text-slate-400 font-semibold mt-0.5">Across 7 Indian River Basins</div>
@@ -558,7 +558,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
               }}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                 selectedFilter === 'ALL'
-                  ? 'bg-[#0C162E] text-[#7DC5BD] border border-[#2D8A82]/50 shadow-sm'
+                  ? 'bg-[#141E28] text-[#7DC5BD] border border-[#2D8A82]/50 shadow-sm'
                   : 'bg-[#DDD5C5] text-[#0F172A] border border-[#C7BEAD] hover:bg-white'
               }`}
             >
@@ -650,7 +650,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
               <button
                 onClick={() => setMapTheme('dark')}
                 className={`px-2.5 py-1 rounded-md font-semibold text-xs transition-colors cursor-pointer ${
-                  mapTheme === 'dark' ? 'bg-[#0C162E] text-white shadow-sm' : 'text-[#0F172A]'
+                  mapTheme === 'dark' ? 'bg-[#141E28] text-white shadow-sm' : 'text-[#0F172A]'
                 }`}
               >
                 Dark Grey Tactical
@@ -713,12 +713,12 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
         {/* LEFT COLUMN: Map Container + Live Fleet Advisory Feed (8 Cols) */}
         <div className="lg:col-span-8 flex flex-col gap-4">
           {/* MAP CANVAS */}
-          <div className="relative bg-[#0C162E] rounded-2xl border border-[#203566] overflow-hidden shadow-elevated h-[460px] sm:h-[500px]">
+          <div className="relative bg-[#141E28] rounded-2xl border border-[#2C3E50] overflow-hidden shadow-elevated h-[460px] sm:h-[500px]">
             {/* Map canvas */}
             <div ref={mapContainerRef} className="w-full h-full z-10" />
 
             {/* Floating Andheri Notice Banner overlay */}
-            <div className="absolute top-3 left-3 z-20 bg-[#0C162E]/95 backdrop-blur-md px-3.5 py-2 rounded-xl border border-[#203566] shadow-card text-[11px] text-slate-300 pointer-events-none">
+            <div className="absolute top-3 left-3 z-20 bg-[#141E28]/95 backdrop-blur-md px-3.5 py-2 rounded-xl border border-[#2C3E50] shadow-card text-[11px] text-slate-300 pointer-events-none">
               <div className="flex items-center space-x-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#DC2626] animate-pulse"></span>
                 <span className="font-bold text-white">Andheri Subway Highlighted</span>
@@ -728,7 +728,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
             </div>
 
             {/* Floating Route Legend Overlay */}
-            <div className="absolute bottom-6 left-3 z-20 bg-[#0C162E]/95 backdrop-blur-md p-3.5 rounded-xl border border-[#203566] text-[11px] shadow-card space-y-1.5">
+            <div className="absolute bottom-6 left-3 z-20 bg-[#141E28]/95 backdrop-blur-md p-3.5 rounded-xl border border-[#2C3E50] text-[11px] shadow-card space-y-1.5">
               <div className="font-bold text-white text-[10px] uppercase tracking-wider mb-1">
                 Corridor Navigation Legend
               </div>
@@ -740,7 +740,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
                 <span className="w-4 h-1.5 bg-[#0F766E] rounded"></span>
                 <span className="text-[#6EE7B7] font-bold">Gokhale Bridge Flyover (Safe Active Bypass)</span>
               </div>
-              <div className="flex items-center space-x-2 pt-1 border-t border-[#203566]">
+              <div className="flex items-center space-x-2 pt-1 border-t border-[#2C3E50]">
                 <span className="w-3 h-3 rounded-full bg-[#475569]"></span>
                 <span className="text-slate-400">Grey Nodes: Muted Non-Andheri Regions</span>
               </div>
@@ -748,10 +748,10 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
           </div>
 
           {/* LIVE DISPATCH & HYDRO-LOCK ADVISORY CONSOLE (Fills the space under the map) */}
-          <div className="bg-[#0C162E] rounded-2xl border border-[#203566] p-4 text-white shadow-card space-y-3.5">
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#203566] pb-2.5">
+          <div className="bg-[#141E28] rounded-2xl border border-[#2C3E50] p-4 text-white shadow-card space-y-3.5">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#2C3E50] pb-2.5">
               <div className="flex items-center space-x-2.5">
-                <div className="w-7 h-7 rounded-lg bg-[#15264E] border border-[#203566] flex items-center justify-center text-[#4E9B93]">
+                <div className="w-7 h-7 rounded-lg bg-[#1F2D3D] border border-[#2C3E50] flex items-center justify-center text-[#4E9B93]">
                   <IconRoute className="w-4 h-4 text-[#4E9B93]" />
                 </div>
                 <div>
@@ -768,7 +768,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
                 <span className="px-2 py-0.5 rounded bg-[#14332B] text-[#7DC5BD] border border-[#245447] font-bold">
                   ● 318 ACTIVE REROUTES
                 </span>
-                <span className="px-2 py-0.5 rounded bg-[#101D3D] text-slate-300 border border-[#203566]">
+                <span className="px-2 py-0.5 rounded bg-[#1A2634] text-slate-300 border border-[#2C3E50]">
                   BMC SYNC: 100%
                 </span>
               </div>
@@ -777,7 +777,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
             {/* Advisory event ticker */}
             <div className="grid sm:grid-cols-2 gap-2.5 text-xs">
               {/* Event 1: Andheri Subway Alert */}
-              <div className="p-2.5 rounded-xl bg-[#15264E]/80 border border-[#DC2626]/40 space-y-1">
+              <div className="p-2.5 rounded-xl bg-[#1F2D3D]/80 border border-[#DC2626]/40 space-y-1">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-[#FCA5A5] flex items-center space-x-1.5 font-mono text-[11px]">
                     <span className="w-2 h-2 rounded-full bg-[#DC2626] animate-pulse"></span>
@@ -794,7 +794,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
               </div>
 
               {/* Event 2: Gokhale Flyover Bypass */}
-              <div className="p-2.5 rounded-xl bg-[#15264E]/80 border border-[#0F766E]/40 space-y-1">
+              <div className="p-2.5 rounded-xl bg-[#1F2D3D]/80 border border-[#0F766E]/40 space-y-1">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-[#6EE7B7] flex items-center space-x-1.5 font-mono text-[11px]">
                     <span className="w-2 h-2 rounded-full bg-[#0F766E]"></span>
@@ -811,7 +811,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
               </div>
 
               {/* Event 3: Kurla & Mithi River Alert */}
-              <div className="p-2.5 rounded-xl bg-[#15264E]/80 border border-[#203566] space-y-1">
+              <div className="p-2.5 rounded-xl bg-[#1F2D3D]/80 border border-[#2C3E50] space-y-1">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-[#93C5FD] flex items-center space-x-1.5 font-mono text-[11px]">
                     <span className="w-2 h-2 rounded-full bg-[#2C5282]"></span>
@@ -828,7 +828,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
               </div>
 
               {/* Event 4: BMC Pumping Operations */}
-              <div className="p-2.5 rounded-xl bg-[#15264E]/80 border border-[#203566] space-y-1">
+              <div className="p-2.5 rounded-xl bg-[#1F2D3D]/80 border border-[#2C3E50] space-y-1">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-slate-200 flex items-center space-x-1.5 font-mono text-[11px]">
                     <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
@@ -846,7 +846,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
             </div>
 
             {/* Bottom mini metric bar */}
-            <div className="pt-2 border-t border-[#203566] flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono text-slate-400">
+            <div className="pt-2 border-t border-[#2C3E50] flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono text-slate-400">
               <div className="flex items-center space-x-4">
                 <span>Prevented Hydro-Locks: <strong className="text-emerald-400">1,250 Fleet Units</strong></span>
                 <span className="hidden sm:inline">&bull;</span>
@@ -1007,7 +1007,7 @@ export function IndiaFloodMap({ onSelectNodeForAPI }: IndiaFloodMapProps) {
                     }}
                     className={`w-full text-left px-3 py-2 rounded-lg text-xs transition-all flex items-center justify-between cursor-pointer ${
                       isSelected
-                        ? 'bg-[#0C162E] text-white font-bold shadow-sm'
+                        ? 'bg-[#141E28] text-white font-bold shadow-sm'
                         : isAndheri
                         ? 'bg-[#F5E6E6] text-[#991B1B] hover:bg-white border border-[#E5C2C2]'
                         : isHotspot

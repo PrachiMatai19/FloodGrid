@@ -4,18 +4,21 @@ interface FloodGridBrandLogoProps {
   className?: string;
   variant?: 'full' | 'mark';
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  showBeigeBg?: boolean;
 }
 
 /**
- * High-fidelity vector recreation of the official FloodGrid logo:
- * - Top half: Solid deep midnight navy bold block typography ("FLOODGRID")
- * - Center dividing line: Vibrant cyan/teal flowing water wave ribbon
- * - Bottom half: Submerged watery reflection with rippled liquid distortion effect
+ * Pixel-accurate vector representation of the official FloodGrid brand logo:
+ * - Top half: Ultra-bold compressed midnight navy typography ("FLOODGRID" in #0A192F)
+ * - Center dividing line: Flowing dual-bordered white and vibrant cyan water wave ribbon (#00A3E0)
+ * - Bottom half: Submerged oceanic teal reflection (#2E8EA9) with organic liquid wave ripples
+ * - Background: Seamless beige (#E6DFD3) matching the application canvas
  */
 export function FloodGridBrandLogo({
   className = '',
   variant = 'full',
-  size = 'md'
+  size = 'md',
+  showBeigeBg = false,
 }: FloodGridBrandLogoProps) {
   // Height presets
   const heightClass =
@@ -29,121 +32,137 @@ export function FloodGridBrandLogo({
       ? 'h-16'
       : 'h-9';
 
+  const waveD =
+    "M 8 72 C 30 67, 50 76, 75 71 C 100 66, 120 76, 145 71 C 170 66, 190 76, 215 71 C 240 66, 260 76, 285 71 C 310 66, 330 76, 355 71 C 380 66, 400 75, 420 71 C 432 68, 440 73, 446 70";
+
   return (
     <div className={`inline-flex items-center select-none ${className}`}>
       <svg
-        viewBox="0 0 420 140"
+        viewBox="0 0 452 144"
         className={`${heightClass} w-auto max-w-full drop-shadow-sm`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          {/* Top Half Clip: Everything above the wavy waterline */}
-          <clipPath id="floodgrid-top-clip">
-            <path d="M 0 0 L 420 0 L 420 70 Q 380 66 340 73 Q 300 78 260 70 Q 220 64 180 73 Q 140 79 100 68 Q 60 62 20 72 L 0 72 Z" />
+          {/* Optional beige background pattern if rendered standalone */}
+          {showBeigeBg && (
+            <rect width="452" height="144" rx="16" fill="#E6DFD3" />
+          )}
+
+          {/* Top Half Clip: Everything strictly above the undulating waterline */}
+          <clipPath id="fg-logo-top-clip">
+            <path
+              d={`M 0 0 L 452 0 L 452 70 C 440 73, 432 68, 420 71 C 400 75, 380 66, 355 71 C 330 76, 310 66, 285 71 C 260 76, 240 66, 215 71 C 190 76, 170 66, 145 71 C 120 76, 100 66, 75 71 C 50 76, 30 67, 8 72 L 0 72 Z`}
+            />
           </clipPath>
 
-          {/* Bottom Half Clip: Everything below the wavy waterline */}
-          <clipPath id="floodgrid-bottom-clip">
-            <path d="M 0 72 Q 20 72 60 62 Q 100 68 140 79 Q 180 73 220 64 Q 260 70 300 78 Q 340 73 380 66 L 420 70 L 420 140 L 0 140 Z" />
+          {/* Bottom Half Clip: Everything strictly below the undulating waterline */}
+          <clipPath id="fg-logo-bottom-clip">
+            <path
+              d={`M 0 72 L 8 72 C 30 67, 50 76, 75 71 C 100 66, 120 76, 145 71 C 170 66, 190 76, 215 71 C 240 66, 260 76, 285 71 C 310 66, 330 76, 355 71 C 380 66, 400 75, 420 71 C 432 68, 440 73, 446 70 L 452 70 L 452 144 L 0 144 Z`}
+            />
           </clipPath>
 
-          {/* Liquid ripple turbulence filter for the submerged reflection */}
-          <filter id="floodgrid-water-ripple" x="-10%" y="0%" width="120%" height="120%">
+          {/* Organic liquid displacement map reproducing the undulating water ripples of the logo */}
+          <filter id="fg-water-ripple-filter" x="-10%" y="-10%" width="120%" height="130%">
             <feTurbulence
               type="fractalNoise"
-              baseFrequency="0.04 0.12"
+              baseFrequency="0.018 0.09"
               numOctaves="2"
-              result="noise"
+              result="turbulence"
             />
             <feDisplacementMap
               in="SourceGraphic"
-              in2="noise"
-              scale="5"
+              in2="turbulence"
+              scale="6.8"
               xChannelSelector="R"
               yChannelSelector="G"
             />
           </filter>
 
-          {/* Water ribbon gradient */}
-          <linearGradient id="floodgrid-wave-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#0EA5E9" />
-            <stop offset="35%" stopColor="#38BDF8" />
-            <stop offset="70%" stopColor="#0284C7" />
-            <stop offset="100%" stopColor="#0369A1" />
+          {/* Vibrant cyan water stream gradient */}
+          <linearGradient id="fg-water-ribbon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#0284C7" />
+            <stop offset="25%" stopColor="#00A3E0" />
+            <stop offset="50%" stopColor="#38BDF8" />
+            <stop offset="75%" stopColor="#00A3E0" />
+            <stop offset="100%" stopColor="#0284C7" />
           </linearGradient>
 
-          {/* Submerged text gradient */}
-          <linearGradient id="floodgrid-submerged-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#2F8FA5" />
-            <stop offset="50%" stopColor="#25758A" />
-            <stop offset="100%" stopColor="#1B5D70" />
+          {/* Submerged teal reflection gradient */}
+          <linearGradient id="fg-submerged-teal-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#3697B2" />
+            <stop offset="50%" stopColor="#2E8EA9" />
+            <stop offset="100%" stopColor="#257A92" />
           </linearGradient>
         </defs>
 
-        {/* 1. TOP HALF: Deep Midnight Navy Solid Typography */}
-        <g clipPath="url(#floodgrid-top-clip)">
+        {showBeigeBg && <rect width="452" height="144" rx="16" fill="#E6DFD3" />}
+
+        {/* 1. TOP HALF: Heavy Midnight Navy Solid Letters (#0A192F) */}
+        <g clipPath="url(#fg-logo-top-clip)">
           <text
-            x="210"
-            y="94"
+            x="226"
+            y="97"
             textAnchor="middle"
-            fill="#0A1629"
+            fill="#0A192F"
             fontFamily="'Impact', 'Arial Black', -apple-system, sans-serif"
             fontWeight="900"
-            fontSize="88"
-            letterSpacing="-1.5"
+            fontSize="93"
+            letterSpacing="-2px"
             style={{ textTransform: 'uppercase' }}
           >
             FLOODGRID
           </text>
         </g>
 
-        {/* 2. BOTTOM HALF: Submerged Watery Reflection (Teal-Cyan with Wave Ripple Effect) */}
-        <g clipPath="url(#floodgrid-bottom-clip)" filter="url(#floodgrid-water-ripple)">
+        {/* 2. BOTTOM HALF: Submerged Oceanic Teal Letters (#2E8EA9) with Fluid Wave Ripples */}
+        <g clipPath="url(#fg-logo-bottom-clip)" filter="url(#fg-water-ripple-filter)">
           <text
-            x="210"
-            y="98"
+            x="226"
+            y="97"
             textAnchor="middle"
-            fill="url(#floodgrid-submerged-grad)"
+            fill="url(#fg-submerged-teal-grad)"
             fontFamily="'Impact', 'Arial Black', -apple-system, sans-serif"
             fontWeight="900"
-            fontSize="88"
-            letterSpacing="-1.5"
-            opacity="0.94"
+            fontSize="93"
+            letterSpacing="-2px"
             style={{ textTransform: 'uppercase' }}
           >
             FLOODGRID
           </text>
         </g>
 
-        {/* 3. CENTER WATER LEVEL WAVE RIBBON (Flowing Cyan Liquid Stream) */}
-        {/* Under glow / shadow */}
+        {/* 3. CENTER WATER LEVEL WAVE RIBBON */}
+        {/* Layer A: Clean White Outer Border Framing the Wave */}
         <path
-          d="M -10 71 Q 30 63 70 70 Q 110 78 150 71 Q 190 62 230 71 Q 270 80 310 72 Q 350 64 390 71 Q 410 74 430 71"
-          stroke="#0369A1"
-          strokeWidth="6.5"
+          d={waveD}
+          stroke="#FFFFFF"
+          strokeWidth="6"
           strokeLinecap="round"
-          fill="none"
-          opacity="0.4"
-        />
-
-        {/* Primary flowing wave stroke */}
-        <path
-          d="M -10 70 Q 30 62 70 69 Q 110 77 150 70 Q 190 61 230 70 Q 270 79 310 71 Q 350 63 390 70 Q 410 73 430 70"
-          stroke="url(#floodgrid-wave-grad)"
-          strokeWidth="4.5"
-          strokeLinecap="round"
+          strokeLinejoin="round"
           fill="none"
         />
 
-        {/* Top foam / crest highlight */}
+        {/* Layer B: Vibrant Cyan Liquid Wave Center */}
         <path
-          d="M -10 68.5 Q 30 60.5 70 67.5 Q 110 75.5 150 68.5 Q 190 59.5 230 68.5 Q 270 77.5 310 69.5 Q 350 61.5 390 68.5 Q 410 71.5 430 68.5"
-          stroke="#BAE6FD"
-          strokeWidth="1.5"
+          d={waveD}
+          stroke="url(#fg-water-ribbon-grad)"
+          strokeWidth="3.6"
           strokeLinecap="round"
+          strokeLinejoin="round"
           fill="none"
-          opacity="0.8"
+        />
+
+        {/* Layer C: Sunlit Foam Highlight on the Upper Wave Ridge */}
+        <path
+          d={waveD}
+          stroke="#F0F9FF"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          opacity="0.9"
         />
       </svg>
     </div>
@@ -151,68 +170,69 @@ export function FloodGridBrandLogo({
 }
 
 /**
- * Compact Icon / Mark Badge version of the logo for small square containers
+ * Compact Icon / Mark Badge version for square and mobile badge avatars
+ * Updated with matching warm beige background (#E6DFD3) and authentic wave styling
  */
 export function FloodGridIconMark({ className = "w-8 h-8" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <clipPath id="fg-mark-top">
-          <path d="M 0 0 L 64 0 L 64 32 Q 48 30 32 34 Q 16 31 0 33 Z" />
+        <clipPath id="fg-mark-top-clip">
+          <path d="M 0 0 L 64 0 L 64 32 Q 48 29 32 34 Q 16 29 0 33 Z" />
         </clipPath>
-        <clipPath id="fg-mark-bottom">
-          <path d="M 0 33 Q 16 31 32 34 Q 48 30 64 32 L 64 64 L 0 64 Z" />
+        <clipPath id="fg-mark-bottom-clip">
+          <path d="M 0 33 Q 16 29 32 34 Q 48 29 64 32 L 64 64 L 0 64 Z" />
         </clipPath>
       </defs>
 
-      {/* Rounded Badge Container */}
-      <rect width="64" height="64" rx="14" fill="#0C162E" stroke="#203566" strokeWidth="2" />
+      {/* Rounded Beige Badge Container matching the app canvas */}
+      <rect width="64" height="64" rx="14" fill="#E6DFD3" stroke="#D4CBB9" strokeWidth="2" />
 
-      {/* Top Half of "FG" */}
-      <g clipPath="url(#fg-mark-top)">
+      {/* Top Half of "FG" in Midnight Navy */}
+      <g clipPath="url(#fg-mark-top-clip)">
         <text
           x="32"
-          y="42"
+          y="43"
           textAnchor="middle"
-          fill="#FFFFFF"
+          fill="#0A192F"
           fontFamily="'Impact', 'Arial Black', sans-serif"
           fontWeight="900"
-          fontSize="36"
-          letterSpacing="-1"
+          fontSize="38"
+          letterSpacing="-1.5px"
         >
           FG
         </text>
       </g>
 
-      {/* Bottom Submerged Reflection */}
-      <g clipPath="url(#fg-mark-bottom)">
+      {/* Bottom Submerged Reflection in Oceanic Teal */}
+      <g clipPath="url(#fg-mark-bottom-clip)">
         <text
           x="32"
-          y="44"
+          y="43"
           textAnchor="middle"
-          fill="#38BDF8"
+          fill="#2E8EA9"
           fontFamily="'Impact', 'Arial Black', sans-serif"
           fontWeight="900"
-          fontSize="36"
-          letterSpacing="-1"
-          opacity="0.9"
+          fontSize="38"
+          letterSpacing="-1.5px"
         >
           FG
         </text>
       </g>
 
-      {/* Center Wave */}
+      {/* White Border for Center Wave */}
       <path
-        d="M 2 32.5 Q 16 30.5 32 33.5 Q 48 29.5 62 31.5"
-        stroke="#38BDF8"
-        strokeWidth="3.5"
+        d="M 2 32.5 Q 16 29.5 32 34 Q 48 29.5 62 32"
+        stroke="#FFFFFF"
+        strokeWidth="4"
         strokeLinecap="round"
         fill="none"
       />
+      {/* Cyan Center Wave */}
       <path
-        d="M 2 31.5 Q 16 29.5 32 32.5 Q 48 28.5 62 30.5"
-        stroke="#E0F2FE"
-        strokeWidth="1.2"
+        d="M 2 32.5 Q 16 29.5 32 34 Q 48 29.5 62 32"
+        stroke="#00A3E0"
+        strokeWidth="2.2"
         strokeLinecap="round"
         fill="none"
       />

@@ -97,7 +97,7 @@ export function LiveApiDemoSection({
                   onClick={() => setDemoLocation(spot.id)}
                   className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex flex-col items-center justify-center space-y-1 cursor-pointer ${
                     demoLocation === spot.id
-                      ? 'bg-[#0C162E] text-[#7DC5BD] border border-[#2D8A82]/60 shadow-sm'
+                      ? 'bg-[#141E28] text-[#7DC5BD] border border-[#2D8A82]/60 shadow-sm'
                       : 'bg-[#DDD5C5] text-[#0F172A] border border-[#C7BEAD] hover:bg-white'
                   }`}
                 >
@@ -209,8 +209,8 @@ export function LiveApiDemoSection({
       </div>
 
       {/* Real-Time JSON Response Inspection Terminal */}
-      <div className="bg-[#0C162E] rounded-2xl border border-[#203566] overflow-hidden shadow-elevated">
-        <div className="bg-[#101D3D] px-5 py-3 border-b border-[#203566] flex flex-wrap items-center justify-between gap-3">
+      <div className="bg-[#141E28] rounded-2xl border border-[#2C3E50] overflow-hidden shadow-elevated">
+        <div className="bg-[#1A2634] px-5 py-3 border-b border-[#2C3E50] flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center space-x-3">
             <div className="flex space-x-1.5">
               <span className="w-3 h-3 rounded-full bg-[#A84A4A]"></span>
@@ -229,7 +229,7 @@ export function LiveApiDemoSection({
           <div className="flex items-center space-x-2">
             <button
               onClick={copyToClipboard}
-              className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-mono font-semibold text-slate-200 bg-[#15264E] hover:bg-[#203566] border border-[#203566] transition-colors cursor-pointer"
+              className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-mono font-semibold text-slate-200 bg-[#1F2D3D] hover:bg-[#2C3E50] border border-[#2C3E50] transition-colors cursor-pointer"
             >
               <IconCopy className="w-3.5 h-3.5 text-[#4E9B93]" />
               <span>{copiedPayload ? "Copied!" : "Copy JSON"}</span>
@@ -262,7 +262,7 @@ export function LiveApiDemoSection({
           </pre>
         </div>
 
-        <div className="bg-[#101D3D]/80 px-5 py-2.5 border-t border-[#203566] text-[11px] font-mono text-slate-400 flex flex-wrap items-center justify-between gap-2">
+        <div className="bg-[#1A2634]/80 px-5 py-2.5 border-t border-[#2C3E50] text-[11px] font-mono text-slate-400 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center space-x-2">
             <span className="w-2 h-2 rounded-full bg-[#0F766E]"></span>
             <span>Payload Size: 418 bytes</span>
